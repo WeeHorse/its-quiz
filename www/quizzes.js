@@ -76,6 +76,30 @@ const quizSets = [
         options: ['Solarigate', 'Industroyer', 'Mirai', 'Code Red'],
         answer: 1,
         explanation: 'Industroyer, även känt som CrashOverride, är starkt förknippat med attacker mot Ukrainas elnät. Det är ett viktigt exempel på hur malware kan byggas för att påverka industriella kontrollsystem och eldistribution.'
+      },
+      {
+        category: 'Arkitektur', catClass: 'cat-arch',
+        q: 'Vilken beskrivning fångar bäst skillnaden mellan <strong>IT och OT</strong> ur ett säkerhetsperspektiv?',
+        options: [
+          'IT fokuserar främst på konfidentialitet medan OT ofta prioriterar tillgänglighet och safety',
+          'OT fokuserar främst på konfidentialitet medan IT prioriterar safety',
+          'IT och OT har i praktiken identiska säkerhetskrav',
+          'OT saknar behov av informationssäkerhet eftersom systemen styr fysisk utrustning'
+        ],
+        answer: 0,
+        explanation: 'I IT är konfidentialitet ofta mycket central, medan OT-miljöer vanligtvis prioriterar tillgänglighet, stabil drift och safety eftersom störningar kan påverka fysisk process, människor och samhällsviktig verksamhet.'
+      },
+      {
+        category: 'Historiska attacker', catClass: 'cat-attacks',
+        q: 'Varför blev <strong>Stuxnet</strong> ett strategiskt vägskäl för ICS-säkerhet?',
+        options: [
+          'För att det var det första antivirusprogrammet för PLC:er',
+          'För att det visade att malware kunde designas för att påverka fysisk process via styrsystem',
+          'För att det bara påverkade vanliga kontorsdatorer',
+          'För att det gjorde patchning onödig i OT'
+        ],
+        answer: 1,
+        explanation: 'Stuxnet visade att avancerad skadlig kod kunde gå längre än datastöld eller störning av IT-system och i stället manipulerar styrlogik och fysisk process. Det förändrade hur världen såg på cyberhot mot industriella miljöer.'
       }
     ]
   },
@@ -161,6 +185,30 @@ const quizSets = [
         options: ['Attack chain', 'Firewall rule', 'IDS alert', 'Network segmentation'],
         answer: 0,
         explanation: 'Detta beskriver en attack chain, alltså en kedja av steg där angriparen successivt tar sig närmare sitt mål genom att utnyttja flera svagheter eller möjligheter i följd.'
+      },
+      {
+        category: 'Threat Modeling', catClass: 'cat-threat',
+        q: 'Vilket steg är oftast <strong>mest användbart först</strong> i en enkel hotmodellering av ett OT-system?',
+        options: [
+          'Att börja med att köpa säkerhetsverktyg',
+          'Att kartlägga assets, zoner, kommunikationsvägar och kritiska beroenden',
+          'Att direkt skriva incidentrapport',
+          'Att slumpmässigt välja ett hot och anta att det är viktigast'
+        ],
+        answer: 1,
+        explanation: 'En användbar hotmodellering börjar normalt med att förstå miljön: vilka tillgångar som finns, hur systemen kommunicerar, vilka beroenden som är kritiska och var gränssnitten finns. Utan den bilden blir resten av analysen svag.'
+      },
+      {
+        category: 'Riskanalys', catClass: 'cat-risk',
+        q: 'Vilket scenario illustrerar bäst <strong>hög konsekvens men lägre sannolikhet</strong> i OT-riskanalys?',
+        options: [
+          'En användare skriver fel lösenord en gång',
+          'En kort nätverksfördröjning utan processpåverkan',
+          'Manipulation av styrlogik i ett kraftsystem som leder till längre driftstopp',
+          'En missad loggpost i en övervakningsserver'
+        ],
+        answer: 2,
+        explanation: 'I OT finns scenarier som inte inträffar ofta men som kan få mycket stora effekter om de väl händer, exempelvis manipulation av styrlogik i kritisk infrastruktur. Riskbedömning i ICS måste därför väga in även sällsynta men allvarliga utfall.'
       }
     ]
   },
@@ -168,7 +216,7 @@ const quizSets = [
     id: 'quiz3',
     title: 'Quiz 3 – ICS Defense & Security',
     timing: 'Slutet av vecka 3',
-    description: 'Fokus på försvar i OT, segmentering, övervakning, autentisering och relevanta säkerhetsprinciper och standarder.',
+    description: 'Fokus på försvar i OT, segmentering, övervakning, autentisering och säkerhetsprinciper.',
     tags: ['Försvar', 'Säkerhetsarkitektur', 'Utvärdering'],
     questions: [
       {
@@ -256,6 +304,30 @@ const quizSets = [
         ],
         answer: 1,
         explanation: 'Monitoring används för att upptäcka avvikande beteenden, intrångsförsök och driftmässiga anomalier. I OT är det viktigt eftersom många attacker först syns som små förändringar i trafik eller processdata.'
+      },
+      {
+        category: 'Defense', catClass: 'cat-defense',
+        q: 'Vilken kombination ger oftast <strong>starkast praktiskt skydd</strong> mot lateral rörelse från IT till OT?',
+        options: [
+          'Snabbare switchar och större skärmar i kontrollrummet',
+          'Segmentering, strikt åtkomstkontroll, övervakning och begränsad fjärråtkomst',
+          'Fler användarkonton för operatörer',
+          'Att låta all trafik passera fritt men logga den i efterhand'
+        ],
+        answer: 1,
+        explanation: 'Ett effektivt OT-försvar bygger sällan på en enda kontroll. Kombinationen av segmentering, begränsad åtkomst, övervakning och kontrollerad fjärranslutning gör det betydligt svårare för en angripare att röra sig från IT in i OT-miljön.'
+      },
+      {
+        category: 'Defense', catClass: 'cat-defense',
+        q: 'Varför är <strong>passiv övervakning</strong> ofta att föredra i OT-nätverk?',
+        options: [
+          'För att den alltid blockerar attacker automatiskt',
+          'För att den kan minska risken att störa känsliga system och protokoll',
+          'För att den ersätter behovet av segmentering',
+          'För att den gör patchning onödig'
+        ],
+        answer: 1,
+        explanation: 'Många OT-system är känsliga för aktiv scanning och oväntad trafik. Passiv övervakning låter organisationen observera kommunikation och beteenden utan att i samma grad riskera att störa driftkritiska system eller processer.'
       }
     ]
   }

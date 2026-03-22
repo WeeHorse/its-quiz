@@ -15,7 +15,7 @@ function initHome() {
       <p>${quiz.description}</p>
       <div class="quiz-tags">
         ${quiz.tags.map(tag => `<span class="quiz-tag">${tag}</span>`).join('')}
-        <span class="quiz-tag">8 frågor</span>
+        <span class="quiz-tag">10 frågor</span>
       </div>
       <button class="btn btn-primary" onclick="startQuiz('${quiz.id}')">Starta del ${idx + 1}</button>
     </div>
