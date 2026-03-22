@@ -4,6 +4,8 @@ const path = require('path');
 const PORT = 5224;
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'www')));
+
 app.use((_req, res, _next) => {
   res.sendFile(path.join(__dirname, 'www', 'index.html'));
 });
