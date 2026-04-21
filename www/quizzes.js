@@ -1,333 +1,382 @@
 const quizSets = [
   {
     id: 'quiz1',
-    title: 'Quiz 1 – ICS Fundamentals & Attacks',
-    timing: 'Slutet av vecka 1',
-    description: 'Fokus på ICS-arkitektur, centrala OT-begrepp och historiska attacker mot industriella styrsystem.',
-    tags: ['ICS-arkitektur', 'Begrepp', 'Historiska attacker'],
+    title: 'Molnsäkerhet och hybrida miljöer – Del 1: Cloud Fundamentals & DevOps',
+    description: 'Grundläggande förståelse för molntjänster, ansvar och säker CI/CD.',
+    tags: ['Cloud', 'DevOps', 'Security'],
     questions: [
       {
-        category: 'ICS Fundamentals', catClass: 'cat-fund',
-        q: 'Vad är huvudsyftet med ett <strong>SCADA-system</strong>?',
+        category: 'Cloud Fundamentals', catClass: 'cat-cloud',
+        q: 'Vad innebär <strong>IaaS</strong>?',
         options: [
-          'Att utveckla PLC-program',
-          'Att övervaka och styra industriella processer',
-          'Att skydda nätverk från intrång',
-          'Att analysera loggar'
+          'Att leverantören hanterar hela applikationen',
+          'Att kunden hanterar operativsystem och applikationer',
+          'Att kunden endast hanterar användare',
+          'Att inget ansvar ligger på kunden'
         ],
         answer: 1,
-        explanation: 'SCADA står för Supervisory Control and Data Acquisition. Systemet används för att övervaka processer, samla in driftdata och möjliggöra styrning av industriella anläggningar på övergripande nivå.'
+        explanation: 'IaaS innebär att leverantören tillhandahåller infrastruktur medan kunden ansvarar för OS, applikationer och data.'
       },
       {
-        category: 'ICS Fundamentals', catClass: 'cat-fund',
-        q: 'Vilken komponent styr vanligtvis <strong>fysiska processer</strong> i ett ICS-system?',
-        options: ['Firewall', 'PLC', 'Router', 'Historian'],
-        answer: 1,
-        explanation: 'En PLC, Programmable Logic Controller, används för att läsa in signaler från sensorer och styra aktuatorer i den fysiska processen. Det är därför en central komponent i många industriella system.'
-      },
-      {
-        category: 'Arkitektur', catClass: 'cat-arch',
-        q: 'Vad beskriver <strong>Purdue-modellen</strong>?',
+        category: 'Cloud Fundamentals', catClass: 'cat-cloud',
+        q: 'Vad beskriver <strong>Shared Responsibility Model</strong>?',
         options: [
-          'En attackmodell',
-          'En säkerhetsstandard',
-          'En arkitekturmodell för industriella system',
-          'En riskanalysmetod'
+          'Att kunden ansvarar för allt',
+          'Att leverantören ansvarar för allt',
+          'Att ansvar delas mellan leverantör och kund',
+          'Att säkerhet inte behövs i molnet'
         ],
         answer: 2,
-        explanation: 'Purdue-modellen är en referensmodell som delar upp industriella system i olika nivåer, från fysisk process och styrning till företags-IT. Den används ofta för att diskutera segmentering och säkerhetszoner i OT-miljöer.'
+        explanation: 'Ansvar delas beroende på tjänstemodell.'
       },
       {
-        category: 'Historiska attacker', catClass: 'cat-attacks',
-        q: 'Vilken attack är mest känd för att ha riktat sig mot <strong>industriella styrsystem i Iran</strong>?',
-        options: ['WannaCry', 'Stuxnet', 'NotPetya', 'Heartbleed'],
-        answer: 1,
-        explanation: 'Stuxnet är det mest kända exemplet på malware som specifikt riktades mot industriella styrsystem. Den attackerade bland annat centrifuger och blev ett historiskt vägskäl för ICS-säkerhet.'
-      },
-      {
-        category: 'ICS Fundamentals', catClass: 'cat-fund',
-        q: 'Vilken typ av komponent används ofta för att <strong>samla in sensordata och skicka den till SCADA</strong>?',
-        options: ['RTU', 'Switch', 'IDS', 'Proxy'],
-        answer: 0,
-        explanation: 'En RTU, Remote Terminal Unit, används ofta i distribuerade miljöer för att samla in data från sensorer och skicka vidare informationen till ett SCADA-system för övervakning och styrning.'
-      },
-      {
-        category: 'Attackytor', catClass: 'cat-attacks',
-        q: 'Vilket av följande är en typisk <strong>attackyta i OT-miljöer</strong>?',
-        options: ['Remote maintenance access', 'Offline PLC', 'Air-gapped system', 'Analog sensor'],
-        answer: 0,
-        explanation: 'Fjärråtkomst för underhåll är en vanlig attackyta eftersom den skapar en väg in till OT-miljön. Extern uppkoppling, leverantörsåtkomst och svagt skyddade VPN-lösningar är därför särskilt känsliga.'
-      },
-      {
-        category: 'Arkitektur', catClass: 'cat-arch',
-        q: 'Varför är patchning svårare i OT än i IT?',
+        category: 'Cloud', catClass: 'cat-cloud',
+        q: 'Vilken risk är typisk vid felkonfigurerad <strong>cloud storage</strong>?',
         options: [
-          'Patchar existerar inte',
-          'Uppdateringar kan påverka drift och safety',
-          'OT använder inte operativsystem',
-          'OT-system saknar nätverk'
+          'Ökad CPU-användning',
+          'Dataexponering',
+          'Långsammare nätverk',
+          'Felaktig UI-design'
         ],
         answer: 1,
-        explanation: 'I OT kan en uppdatering påverka tillgänglighet, stabilitet eller safety. Därför måste patchning ofta planeras noggrant, testas i förväg och ibland skjutas upp om driftkritiska system riskerar att påverkas.'
+        explanation: 'Felaktiga access policies kan exponera data.'
       },
       {
-        category: 'Historiska attacker', catClass: 'cat-attacks',
-        q: 'Vilken attack riktade sig mot <strong>ukrainska elnätet 2015–2016</strong>?',
-        options: ['Solarigate', 'Industroyer', 'Mirai', 'Code Red'],
-        answer: 1,
-        explanation: 'Industroyer, även känt som CrashOverride, är starkt förknippat med attacker mot Ukrainas elnät. Det är ett viktigt exempel på hur malware kan byggas för att påverka industriella kontrollsystem och eldistribution.'
-      },
-      {
-        category: 'Arkitektur', catClass: 'cat-arch',
-        q: 'Vilken beskrivning fångar bäst skillnaden mellan <strong>IT och OT</strong> ur ett säkerhetsperspektiv?',
+        category: 'Cloud', catClass: 'cat-cloud',
+        q: 'Varför är <strong>identity management</strong> kritiskt i molnet?',
         options: [
-          'IT fokuserar främst på konfidentialitet medan OT ofta prioriterar tillgänglighet och safety',
-          'OT fokuserar främst på konfidentialitet medan IT prioriterar safety',
-          'IT och OT har i praktiken identiska säkerhetskrav',
-          'OT saknar behov av informationssäkerhet eftersom systemen styr fysisk utrustning'
-        ],
-        answer: 0,
-        explanation: 'I IT är konfidentialitet ofta mycket central, medan OT-miljöer vanligtvis prioriterar tillgänglighet, stabil drift och safety eftersom störningar kan påverka fysisk process, människor och samhällsviktig verksamhet.'
-      },
-      {
-        category: 'Historiska attacker', catClass: 'cat-attacks',
-        q: 'Varför blev <strong>Stuxnet</strong> ett strategiskt vägskäl för ICS-säkerhet?',
-        options: [
-          'För att det var det första antivirusprogrammet för PLC:er',
-          'För att det visade att malware kunde designas för att påverka fysisk process via styrsystem',
-          'För att det bara påverkade vanliga kontorsdatorer',
-          'För att det gjorde patchning onödig i OT'
+          'För att öka prestanda',
+          'För att styra åtkomst till resurser',
+          'För att komprimera data',
+          'För att hantera nätverk'
         ],
         answer: 1,
-        explanation: 'Stuxnet visade att avancerad skadlig kod kunde gå längre än datastöld eller störning av IT-system och i stället manipulerar styrlogik och fysisk process. Det förändrade hur världen såg på cyberhot mot industriella miljöer.'
+        explanation: 'Identiteter styr åtkomst till resurser.'
+      },
+      {
+        category: 'Cloud Architecture', catClass: 'cat-cloud',
+        q: 'Vilken designprincip minskar blast radius i cloud?',
+        options: [
+          'Centralisering',
+          'Segmentering och isolering',
+          'Delade credentials',
+          'Publika endpoints'
+        ],
+        answer: 1,
+        explanation: 'Segmentering begränsar spridning av attacker.'
+      },
+      {
+        category: 'Security', catClass: 'cat-cloud',
+        q: 'Vilken typ av attack är vanligast mot cloud identities?',
+        options: [
+          'DDoS',
+          'Credential theft',
+          'Fysisk sabotage',
+          'Disk failure'
+        ],
+        answer: 1,
+        explanation: 'Stulna credentials är en vanlig attackvektor.'
+      },
+      {
+        category: 'Cloud', catClass: 'cat-cloud',
+        q: 'Vad är en typisk konsekvens av överprivilegierade konton?',
+        options: [
+          'Snabbare system',
+          'Större attackyta',
+          'Mindre lagring',
+          'Lägre kostnader'
+        ],
+        answer: 1,
+        explanation: 'För breda rättigheter ökar risken vid intrång.'
+      },
+      {
+        category: 'Security', catClass: 'cat-cloud',
+        q: 'Vad är syftet med <strong>Zero Trust</strong>?',
+        options: [
+          'Tillåta all trafik internt',
+          'Verifiera allt, alltid',
+          'Blockera internet',
+          'Ta bort autentisering'
+        ],
+        answer: 1,
+        explanation: 'Zero Trust bygger på kontinuerlig verifiering.'
+      },
+
+      // NYA FRÅGOR
+      {
+        category: 'Azure DevOps', catClass: 'cat-devops',
+        q: 'Vilken säkerhetsrisk uppstår om <strong>hemligheter lagras direkt i kod eller pipeline</strong>?',
+        options: [
+          'Pipelinen blir långsammare',
+          'Hemligheter kan exponeras via repo eller loggar',
+          'Deployment slutar fungera',
+          'Versionshantering bryts'
+        ],
+        answer: 1,
+        explanation: 'Secrets i kod kan exponeras via repo, historik och loggar.'
+      },
+      {
+        category: 'Azure DevOps', catClass: 'cat-devops',
+        q: 'Vilken kombination ger bäst säker CI/CD?',
+        options: [
+          'Publika repos och admin-access',
+          'Branch policies, least privilege och skyddade service connections',
+          'Full access till alla utvecklare',
+          'Ingen loggning'
+        ],
+        answer: 1,
+        explanation: 'Säker CI/CD kräver flera lager av kontroll.'
       }
     ]
   },
+
   {
     id: 'quiz2',
-    title: 'Quiz 2 – Threat Modeling & Risk',
-    timing: 'Slutet av vecka 2',
-    description: 'Fokus på hotmodellering, attackvägar, assets, hotaktörer och grundläggande riskanalys i ICS/OT.',
-    tags: ['Threat modeling', 'Attack paths', 'Riskanalys'],
+    title: 'Molnsäkerhet och hybrida miljöer – Del 2: Risk, Threats & Defender',
+    description: 'Riskanalys, hotbild och Defender for Cloud.',
+    tags: ['Risk', 'Threats', 'Defender'],
     questions: [
       {
-        category: 'Threat Modeling', catClass: 'cat-threat',
-        q: 'Vad är syftet med <strong>threat modeling</strong>?',
+        category: 'Defender', catClass: 'cat-defender',
+        q: 'Vad är syftet med <strong>Microsoft Defender for Cloud</strong>?',
         options: [
-          'Att installera säkerhetsprogram',
-          'Att identifiera och analysera potentiella attacker',
-          'Att konfigurera nätverk',
-          'Att skriva säkerhetspolicy'
+          'Skriva kod',
+          'Ge säkerhetsrekommendationer och upptäcka hot',
+          'Ersätta brandväggar',
+          'Hantera klienter'
         ],
         answer: 1,
-        explanation: 'Threat modeling används för att systematiskt identifiera vad som behöver skyddas, vilka hot som är relevanta och hur en angripare skulle kunna ta sig fram genom miljön.'
+        explanation: 'Defender analyserar säkerhetsläge och hot.'
       },
       {
-        category: 'Threat Modeling', catClass: 'cat-threat',
-        q: 'Vilket av följande är ett exempel på en <strong>asset</strong> i ett ICS-system?',
-        options: ['PLC', 'Malware', 'Phishing', 'Network scan'],
-        answer: 0,
-        explanation: 'En asset är något av värde som organisationen vill skydda. I ett ICS-system kan det vara en PLC, ett styrsystem, en server, ett nätverk eller själva processen som kontrolleras.'
-      },
-      {
-        category: 'Attack Paths', catClass: 'cat-attacks',
-        q: 'Vad beskriver en <strong>attack path</strong>?',
+        category: 'Risk', catClass: 'cat-risk',
+        q: 'Vad definierar risk?',
         options: [
-          'Hur ett system patchas',
-          'Hur en angripare stegvis komprometterar systemet',
-          'Hur data lagras',
-          'Hur nätverk segmenteras'
+          'Antal användare',
+          'Sannolikhet × konsekvens',
+          'CPU-belastning',
+          'Antal servrar'
         ],
         answer: 1,
-        explanation: 'En attack path beskriver de steg en angripare kan ta för att nå ett mål, till exempel från phishing till stulna konton, vidare till VPN-access och därefter in i OT-nätverket.'
+        explanation: 'Risk = sannolikhet × konsekvens.'
       },
       {
-        category: 'Threat Modeling', catClass: 'cat-threat',
-        q: 'Vilket av följande är ett exempel på en <strong>attack surface</strong>?',
-        options: ['PLC firmware', 'VPN access', 'Historian database', 'Safety controller'],
+        category: 'Threats', catClass: 'cat-threat',
+        q: 'Vilket hot är vanligt i cloud?',
+        options: ['Phishing', 'Power surge', 'Disk failure', 'Overheating'],
+        answer: 0,
+        explanation: 'Phishing används för att få access.'
+      },
+      {
+        category: 'Risk', catClass: 'cat-risk',
+        q: 'Vad är en asset?',
+        options: ['Attack', 'VM', 'Threat', 'Exploit'],
         answer: 1,
-        explanation: 'En attackyta är en möjlig ingång eller exponerad punkt som angriparen kan utnyttja. VPN-access är ett tydligt exempel eftersom den öppnar en väg in i nätverket.'
+        explanation: 'En VM är en tillgång.'
       },
       {
-        category: 'Riskanalys', catClass: 'cat-risk',
-        q: 'Vad mäter en <strong>riskanalys</strong>?',
+        category: 'Risk', catClass: 'cat-risk',
+        q: 'Vad innebär residual risk?',
         options: [
-          'Hur mycket CPU systemet använder',
-          'Kombinationen av sannolikhet och konsekvens',
-          'Hur många användare systemet har',
-          'Antal patchar installerade'
+          'Risk före skydd',
+          'Risk efter skydd',
+          'Ingen risk',
+          'Endast IT-risk'
         ],
         answer: 1,
-        explanation: 'Risk brukar beskrivas som en kombination av hur sannolik en händelse är och hur stor konsekvensen blir om den inträffar. Det är en kärnidé i många riskmodeller.'
-      },
-      {
-        category: 'Riskanalys', catClass: 'cat-risk',
-        q: 'Vilken typ av hotaktör är mest trolig bakom <strong>sabotage mot kritisk infrastruktur</strong>?',
-        options: ['Nation state', 'Script kiddie', 'Student', 'Web designer'],
-        answer: 0,
-        explanation: 'Sabotage mot kritisk infrastruktur kräver ofta resurser, uthållighet och strategiskt motiv. Därför kopplas sådana scenarier ofta till statsstödda aktörer eller nation state-kapacitet.'
-      },
-      {
-        category: 'Attack Paths', catClass: 'cat-attacks',
-        q: 'Vad är ett exempel på <strong>sensor spoofing</strong>?',
-        options: [
-          'Manipulera sensordata så att systemet tror att processen är normal',
-          'Installera ransomware',
-          'Blockera nätverkstrafik',
-          'Uppdatera PLC firmware'
-        ],
-        answer: 0,
-        explanation: 'Sensor spoofing innebär att angriparen manipulerar eller förfalskar mätvärden så att operatörer eller styrlogik får en felaktig bild av processens verkliga tillstånd.'
-      },
-      {
-        category: 'Attack Paths', catClass: 'cat-attacks',
-        q: 'Vilken attack kan beskrivas som <code>Phishing → stolen credentials → VPN access → OT network</code>?',
-        options: ['Attack chain', 'Firewall rule', 'IDS alert', 'Network segmentation'],
-        answer: 0,
-        explanation: 'Detta beskriver en attack chain, alltså en kedja av steg där angriparen successivt tar sig närmare sitt mål genom att utnyttja flera svagheter eller möjligheter i följd.'
+        explanation: 'Residual risk är kvarvarande risk.'
       },
       {
         category: 'Threat Modeling', catClass: 'cat-threat',
-        q: 'Vilket steg är oftast <strong>mest användbart först</strong> i en enkel hotmodellering av ett OT-system?',
+        q: 'Vad är första steget i threat modeling?',
         options: [
-          'Att börja med att köpa säkerhetsverktyg',
-          'Att kartlägga assets, zoner, kommunikationsvägar och kritiska beroenden',
-          'Att direkt skriva incidentrapport',
-          'Att slumpmässigt välja ett hot och anta att det är viktigast'
+          'Installera verktyg',
+          'Kartlägga system och assets',
+          'Patcha system',
+          'Blockera trafik'
         ],
         answer: 1,
-        explanation: 'En användbar hotmodellering börjar normalt med att förstå miljön: vilka tillgångar som finns, hur systemen kommunicerar, vilka beroenden som är kritiska och var gränssnitten finns. Utan den bilden blir resten av analysen svag.'
+        explanation: 'Man måste förstå systemet först.'
       },
       {
-        category: 'Riskanalys', catClass: 'cat-risk',
-        q: 'Vilket scenario illustrerar bäst <strong>hög konsekvens men lägre sannolikhet</strong> i OT-riskanalys?',
+        category: 'Compliance', catClass: 'cat-comp',
+        q: 'Vad är syftet med compliance?',
         options: [
-          'En användare skriver fel lösenord en gång',
-          'En kort nätverksfördröjning utan processpåverkan',
-          'Manipulation av styrlogik i ett kraftsystem som leder till längre driftstopp',
-          'En missad loggpost i en övervakningsserver'
+          'Öka prestanda',
+          'Följa lagar',
+          'Bygga UI',
+          'Hantera CPU'
         ],
-        answer: 2,
-        explanation: 'I OT finns scenarier som inte inträffar ofta men som kan få mycket stora effekter om de väl händer, exempelvis manipulation av styrlogik i kritisk infrastruktur. Riskbedömning i ICS måste därför väga in även sällsynta men allvarliga utfall.'
+        answer: 1,
+        explanation: 'Compliance handlar om regelverk.'
+      },
+      {
+        category: 'Risk', catClass: 'cat-risk',
+        q: 'Vilken risk ökar vid dålig accesskontroll?',
+        options: [
+          'Prestanda',
+          'Obehörig åtkomst',
+          'UI-problem',
+          'CPU usage'
+        ],
+        answer: 1,
+        explanation: 'Accesskontroll skyddar resurser.'
+      },
+
+      // NYA FRÅGOR
+      {
+        category: 'Defender', catClass: 'cat-defender',
+        q: 'Vad innebär en rekommendation i Defender?',
+        options: [
+          'Systemfel',
+          'Säkerhetsförbättring behövs',
+          'Azure är trasigt',
+          'Ingen betydelse'
+        ],
+        answer: 1,
+        explanation: 'Rekommendationer visar förbättringsområden.'
+      },
+      {
+        category: 'Defender', catClass: 'cat-defender',
+        q: 'Hur bör en alert analyseras?',
+        options: [
+          'Ignorera den',
+          'Analysera kontext, resurs och risk',
+          'Stäng allt',
+          'Titta på kostnad'
+        ],
+        answer: 1,
+        explanation: 'Alertanalys kräver kontext.'
       }
     ]
   },
+
   {
     id: 'quiz3',
-    title: 'Quiz 3 – ICS Defense & Security',
-    timing: 'Slutet av vecka 3',
-    description: 'Fokus på försvar i OT, segmentering, övervakning, autentisering och säkerhetsprinciper.',
-    tags: ['Försvar', 'Säkerhetsarkitektur', 'Utvärdering'],
+    title: 'Molnsäkerhet och hybrida miljöer – Del 3: Security Controls & AI Security',
+    description: 'Tekniska skydd och AI-säkerhet.',
+    tags: ['Security', 'AI', 'Controls'],
     questions: [
       {
-        category: 'Defense', catClass: 'cat-defense',
-        q: 'Vad är syftet med <strong>network segmentation i OT</strong>?',
+        category: 'Security', catClass: 'cat-sec',
+        q: 'Vad gör MFA?',
         options: [
-          'Att öka bandbredd',
-          'Att isolera system och begränsa attacker',
-          'Att förbättra grafikprestanda',
-          'Att minska energiförbrukning'
+          'Ökar CPU',
+          'Flera autentiseringsfaktorer',
+          'Tar bort lösenord',
+          'Blockerar nätverk'
         ],
         answer: 1,
-        explanation: 'Segmentering delar upp nätverket i zoner och begränsar kommunikationen mellan dem. Det minskar risken att en angripare kan röra sig fritt mellan IT och OT eller mellan olika OT-delar.'
+        explanation: 'MFA skyddar konton.'
       },
       {
-        category: 'Defense', catClass: 'cat-defense',
-        q: 'Vad är en <strong>OT firewall</strong>?',
+        category: 'Security', catClass: 'cat-sec',
+        q: 'Vad innebär least privilege?',
         options: [
-          'En brandvägg anpassad för industriella protokoll',
-          'En router',
-          'En PLC',
-          'Ett antivirus'
-        ],
-        answer: 0,
-        explanation: 'En OT-firewall är anpassad för industriella miljöer och kan ofta hantera eller filtrera trafik med protokoll som används i styrsystem, inte bara vanlig IT-trafik.'
-      },
-      {
-        category: 'Defense', catClass: 'cat-defense',
-        q: 'Vad innebär <strong>least privilege</strong>?',
-        options: [
-          'Alla användare har samma rättigheter',
-          'Användare får minsta möjliga behörighet',
-          'Administratörer har inga rättigheter',
-          'System saknar autentisering'
+          'Alla admin',
+          'Minsta behörighet',
+          'Ingen access',
+          'Full access'
         ],
         answer: 1,
-        explanation: 'Principen least privilege innebär att användare, konton och system endast ska ha de rättigheter de faktiskt behöver. Det begränsar skadeomfånget vid misstag eller intrång.'
+        explanation: 'Begränsar risk.'
       },
       {
-        category: 'Defense', catClass: 'cat-defense',
-        q: 'Vilken metod används för att <strong>upptäcka avvikande beteende i OT-nätverk</strong>?',
-        options: ['Antivirus', 'Anomaly detection', 'Defragmentering', 'Backup'],
-        answer: 1,
-        explanation: 'Anomaly detection bygger på att känna igen normalt beteende och därefter larma när trafiken eller processmönster avviker på ett misstänkt sätt.'
-      },
-      {
-        category: 'Defense', catClass: 'cat-defense',
-        q: 'Vad är syftet med <strong>multi-factor authentication</strong>?',
+        category: 'Network', catClass: 'cat-sec',
+        q: 'Vad gör segmentering?',
         options: [
-          'Öka CPU-prestanda',
-          'Förhindra obehörig åtkomst även om lösenord läcker',
-          'Förbättra nätverkshastighet',
-          'Automatisera patchning'
+          'Ökar hastighet',
+          'Isolerar system',
+          'Tar bort nätverk',
+          'Komprimerar data'
         ],
         answer: 1,
-        explanation: 'MFA kräver fler än en autentiseringsfaktor, till exempel lösenord och engångskod. Därför räcker det inte att angriparen bara får tag i ett lösenord.'
+        explanation: 'Segmentering begränsar attacker.'
       },
       {
-        category: 'Defense', catClass: 'cat-defense',
-        q: 'Vilken standard är särskilt relevant för <strong>industriell cybersäkerhet</strong>?',
-        options: ['ISO 9001', 'IEC 62443', 'HTML5', 'PCI DSS'],
+        category: 'Monitoring', catClass: 'cat-sec',
+        q: 'Vad används för att upptäcka attacker?',
+        options: ['Backup', 'Logging', 'Scaling', 'CDN'],
         answer: 1,
-        explanation: 'IEC 62443 är en central standardserie för cybersäkerhet i industriella automations- och kontrollsystem. Den används ofta som referens för både teknik, processer och ansvar.'
+        explanation: 'Loggar används för analys.'
       },
+
+      // NYA FRÅGA 5
       {
-        category: 'Riskanalys', catClass: 'cat-risk',
-        q: 'Vad betyder <strong>residual risk</strong>?',
+        category: 'AI Security', catClass: 'cat-ai',
+        q: 'Vad är en risk med AI-agenter med API-access?',
         options: [
-          'Risk innan säkerhetsåtgärder',
-          'Risk efter att säkerhetsåtgärder införts',
-          'Risk som ignoreras',
-          'Risk i IT-system'
+          'De blir långsamma',
+          'De kan utföra oönskade handlingar',
+          'De slutar fungera',
+          'De tappar data'
         ],
         answer: 1,
-        explanation: 'Residual risk är den risk som återstår efter att kontroller och skyddsåtgärder har införts. Den blir sällan noll, vilket gör att organisationen måste bedöma om den kvarvarande risken är acceptabel.'
+        explanation: 'Felaktig styrning kan ge oönskade actions.'
       },
+
       {
-        category: 'Defense', catClass: 'cat-defense',
-        q: 'Vad är huvudsyftet med <strong>monitoring i OT-nätverk</strong>?',
+        category: 'Security', catClass: 'cat-sec',
+        q: 'Vad gör encryption?',
         options: [
-          'Förbättra grafik',
-          'Upptäcka intrång och avvikelser',
-          'Komprimera data',
-          'Optimera PLC-kod'
+          'Ökar hastighet',
+          'Skyddar data',
+          'Raderar data',
+          'Analyserar loggar'
         ],
         answer: 1,
-        explanation: 'Monitoring används för att upptäcka avvikande beteenden, intrångsförsök och driftmässiga anomalier. I OT är det viktigt eftersom många attacker först syns som små förändringar i trafik eller processdata.'
+        explanation: 'Kryptering skyddar data.'
       },
       {
-        category: 'Defense', catClass: 'cat-defense',
-        q: 'Vilken kombination ger oftast <strong>starkast praktiskt skydd</strong> mot lateral rörelse från IT till OT?',
+        category: 'Monitoring', catClass: 'cat-sec',
+        q: 'Vad gör Application Insights?',
         options: [
-          'Snabbare switchar och större skärmar i kontrollrummet',
-          'Segmentering, strikt åtkomstkontroll, övervakning och begränsad fjärråtkomst',
-          'Fler användarkonton för operatörer',
-          'Att låta all trafik passera fritt men logga den i efterhand'
+          'Styra nätverk',
+          'Samla loggar',
+          'Bygga UI',
+          'Deploya kod'
         ],
         answer: 1,
-        explanation: 'Ett effektivt OT-försvar bygger sällan på en enda kontroll. Kombinationen av segmentering, begränsad åtkomst, övervakning och kontrollerad fjärranslutning gör det betydligt svårare för en angripare att röra sig från IT in i OT-miljön.'
+        explanation: 'Används för monitoring.'
       },
       {
-        category: 'Defense', catClass: 'cat-defense',
-        q: 'Varför är <strong>passiv övervakning</strong> ofta att föredra i OT-nätverk?',
+        category: 'Defense', catClass: 'cat-sec',
+        q: 'Vilken kombination ger bäst skydd?',
         options: [
-          'För att den alltid blockerar attacker automatiskt',
-          'För att den kan minska risken att störa känsliga system och protokoll',
-          'För att den ersätter behovet av segmentering',
-          'För att den gör patchning onödig'
+          'Endast MFA',
+          'IAM + segmentering + logging',
+          'Endast antivirus',
+          'Endast backup'
         ],
         answer: 1,
-        explanation: 'Många OT-system är känsliga för aktiv scanning och oväntad trafik. Passiv övervakning låter organisationen observera kommunikation och beteenden utan att i samma grad riskera att störa driftkritiska system eller processer.'
+        explanation: 'Defense in depth är bäst.'
+      },
+
+      // NY FRÅGA 9
+      {
+        category: 'AI Security', catClass: 'cat-ai',
+        q: 'Hur minskar man risker med AI-agenter?',
+        options: [
+          'Ge admin-access',
+          'Least privilege + logging + kontroll',
+          'Ingen loggning',
+          'Full frihet'
+        ],
+        answer: 1,
+        explanation: 'AI-system måste styras strikt.'
+      },
+
+      {
+        category: 'Advanced', catClass: 'cat-adv',
+        q: 'Vad minskar lateral movement mest?',
+        options: [
+          'Snabbare servrar',
+          'Zero Trust + segmentering + logging',
+          'Fler användare',
+          'Snabbare nätverk'
+        ],
+        answer: 1,
+        explanation: 'Kombinerade kontroller stoppar attacker.'
       }
     ]
   }
